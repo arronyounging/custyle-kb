@@ -35,9 +35,9 @@ This repository is the **single source of truth** that powers the Custyle Conver
 
 ## Status
 
-**Phase 0 — Skeleton.** All P0/P1 entries exist as stubs with `confidence: low`. Content batch-fill begins after skeleton is reviewed.
+**Phase 1 — Content complete.** 64 entries across 9 categories, all at `confidence: medium`. Pipeline clean (validate 0/0, lint 0/0). Every entry carries an `Editorial notes` section flagging extrapolations for owner verification.
 
-Cold-start scope: 5 categories — `product-capability`, `ai-design-workflow`, `ordering`, `shipping`, `after-sales`. Other categories (`catalog-and-pricing`, `production`, `account-and-data`, `policies`, `about-custyle`) will follow once Phase 1 is healthy.
+See [`KB.md`](KB.md) for the per-category status board and [`NEXT.md`](NEXT.md) for the medium → high promotion plan.
 
 ## Contributing
 
