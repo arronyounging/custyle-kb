@@ -52,6 +52,17 @@ A few notes:
 - "Do you ship to [specific country not commonly listed]?" → handoff `shop.check_shipping_availability`.
 - Bulk / freight / pallet shipping → human teammate.
 
+## Editorial notes (review before promoting to high)
+
+- ks-faq says **"Worldwide. Our fulfillment partner (Printful) has production facilities in the US, Europe, and other regions. International shipping is available to most countries."** No specific country enumeration in source.
+- **My enumeration "US, the UK, the EU, Canada, Australia, Japan"** is inferred from Printful's known fulfillment footprint, not from a Custyle policy doc. Verify against fulfillment integration. Particular concerns:
+  - **Japan**: Printful does ship to Japan but with longer transit; safe to claim.
+  - **EU "most countries"**: hedged language is intentional — some EU member states have shipping limitations on certain products.
+  - **Canada, Australia, NZ**: standard but verify the actual list.
+- "**Restricted destinations** exist (sanctions, embargoes, some remote territories)" — generic e-commerce standard, not in source. Confirm checkout actually surfaces a flag for restricted countries.
+- "**PO boxes / APO/FPO**: supported on some routes only" — speculative. Some carriers don't, some do. Verify.
+- Quick answer ends with "or ask me and I'll route you to a check." — that depends on `shop.check_shipping_availability` op existing. **The op name is a target, not yet confirmed against `custyle-platform`.** Verify before this entry's Quick answer ships in production.
+
 ## Sources
 
 - `~/Desktop/Custyle/launch-strategy/kickstarter/ks-faq.md` — "Where do you ship?" (2026-05)

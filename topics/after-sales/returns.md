@@ -56,6 +56,16 @@ A couple of practical notes:
 - Any specific return / replacement request → handoff to a human teammate. We process these case by case.
 - Defect claim → see [Defects](defects.md) for the evidence checklist before handoff.
 
+## Editorial notes (review before promoting to high)
+
+ks-faq's source policy is essentially **two clauses**: "(a) defects → free replacement, (b) design dissatisfaction → unlimited regen before order." The three-case taxonomy below was structured by me; verify the policy actually matches.
+
+- "**Buyer's remorse on custom merch is not returnable**" — implied by ks-faq's framing ("custom") but never stated as a "we don't accept returns" line. The legal policy doc (when published) should state this clearly; if it's softer there, this entry should soften too.
+- "**Preview-vs-print variance is expected; outside tolerance → defect**" — invented framing, not in source. Industry-standard but the **tolerance threshold** is undefined. Need ops/QA to specify "what counts as outside tolerance."
+- "**Wrong size shipped (defect, free)** vs **Wrong size ordered (buyer choice, not returnable)**" — my distinction, not in source. Some platforms allow size-exchange even when buyer ordered the wrong size. Verify.
+- "**Bulk orders may have different terms**" — speculative. If bulk isn't supported yet (per `kb.ordering.bulk-orders` stub), this clause is premature. Delete or defer until bulk policy exists.
+- "**Photo evidence speeds up resolution**" — common-sense, not in source. Safe but should be confirmed as the documented intake requirement.
+
 ## Sources
 
 - `~/Desktop/Custyle/launch-strategy/kickstarter/ks-faq.md` — "What if I'm not satisfied with my merch?" (2026-05)

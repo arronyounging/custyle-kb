@@ -78,13 +78,20 @@ function walk(dir: string): string[] {
 }
 
 /**
- * Strip the "## Sources" section from a body before linting / exporting.
- * Sources are a writers-facing provenance log — they may legitimately
- * mention vendor names, internal paths, etc. that aren't fit for the
- * customer-facing Answer LLM. Same convention applied in export-for-rag.
+ * Strip writer-only sections from a body before linting / exporting.
+ *
+ * Two sections are writer-only by convention:
+ *   - "## Sources" — vendor names, internal paths, provenance
+ *   - "## Editorial notes ..." — author's annotations on what's
+ *     extrapolated beyond source; reviewed when promoting to high
+ *
+ * Both are excluded from the Answer LLM's context. Same convention
+ * mirrored in export-for-rag.ts.
  */
-function stripSourcesSection(body: string): string {
-  const i = body.search(/^##\s+Sources\s*$/m);
+const WRITER_ONLY_SECTION_PATTERN = /^##\s+(Sources|Editorial notes\b.*)\s*$/m;
+
+function stripWriterOnlySections(body: string): string {
+  const i = body.search(WRITER_ONLY_SECTION_PATTERN);
   return i === -1 ? body : body.slice(0, i);
 }
 
@@ -95,7 +102,7 @@ for (const file of files) {
   const raw = readFileSync(file, "utf8");
   const parsed = matter(raw);
   const fm = parsed.data as Record<string, unknown>;
-  const body = stripSourcesSection(parsed.content);
+  const body = stripWriterOnlySections(parsed.content);
   const confidence = fm.confidence as string;
 
   // Required sections — check against the raw content (including Sources)

@@ -59,6 +59,13 @@ Business days exclude weekends and public holidays in the production region.
 - "How long for a Y product if I order today?" → handoff `shop.estimate_lead_time` for a destination-aware estimate.
 - Custom rush requests → human teammate.
 
+## Editorial notes (review before promoting to high)
+
+- The headline numbers (3–7 production / 3–5 US / 5–10 EU / 7–15 ROW) are lifted **verbatim** from ks-faq.md. But that section explicitly describes Printful's POD fulfillment. **Custyle's positioning is broader than POD** (Product Engine also routes to embroidery, sublimation, all-over print, etc.). Those non-POD techniques almost certainly have different production windows. Either: (a) re-quote ranges that span all techniques, or (b) split the table by technique class. Verify with ops before promoting.
+- "DTG and DTF print fast; embroidery and all-over print take longer" — general industry knowledge, not Custyle-attested. Confirm.
+- "Late November through December may add a few days" — standard POD seasonal pattern, not in any Custyle source. Confirm.
+- "Business days exclude weekends and public holidays in the production region" — implicit standard, not in source. Confirm whether the production region's holidays or the buyer's region's holidays apply.
+
 ## Sources
 
 - `~/Desktop/Custyle/launch-strategy/kickstarter/ks-faq.md` — "How long does shipping take?" section (2026-05)

@@ -57,6 +57,25 @@ Every entry must end with sources. Format:
 
 That said, keep entries trustable: only list sources you actually used. Stale provenance is worse than no provenance.
 
+## The Editorial-notes block (optional, but required for some promotions)
+
+When promoting an entry from `confidence: low` → `medium`, if your Quick answer or Details contains **any claim not directly attested in `Sources`**, add a section:
+
+```markdown
+## Editorial notes (review before promoting to high)
+
+- "We ship to Australia" — inferred from "worldwide"; not in source. **Verify against fulfillment integration before promoting to high.**
+- Lead-time for embroidery — source covers POD lead times only; non-POD techniques may differ.
+```
+
+Format: one bullet per extrapolated claim. State (a) what you claimed, (b) what the source actually said, (c) what should happen at owner-review.
+
+Like `## Sources`, this section is writer-only:
+- Lint skips it (so internal language like "I assumed" is fine).
+- `export-for-rag.ts` excludes it from `body_chunks`.
+
+When an owner promotes the entry to `confidence: high`, every bullet here must be either verified (then deleted) or kept open with explicit next-step. Empty Editorial-notes section before high → delete the section, not leave it dangling.
+
 ## Word choices
 
 | Use | Don't use |

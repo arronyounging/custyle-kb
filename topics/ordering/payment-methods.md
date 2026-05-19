@@ -49,6 +49,19 @@ A few specifics:
 - "Can I split payment across two cards?" → not supported; human teammate.
 - "Can my company pay by invoice?" → bulk / B2B path, human teammate.
 
+## Editorial notes (review before promoting to high)
+
+**This entry is the most extrapolated of the four — ks-faq says only "Stripe handles payment".** The rest is inferred from Stripe's standard capabilities. Specifically:
+
+- "**Visa, Mastercard, American Express, Discover**" — standard Stripe defaults. Verify the Custyle Stripe account has all four enabled (Amex sometimes requires extra activation).
+- "**Apple Pay, Google Pay, Link**" — Stripe defaults when the merchant enables them. Verify whether Custyle has enabled them; "Link" specifically requires opt-in.
+- "**SEPA, iDEAL, Bancontact**" mentioned as regional examples — speculative. Verify exact regional method list.
+- "**Bank transfer, wire, and crypto aren't supported right now**" — likely true but unverified. Could be wrong if Custyle has enabled Stripe's ACH or bank-debit features.
+- "**Charged when the order is placed, not when it ships**" — Stripe-standard immediate capture, but Custyle could be using authorize-then-capture. Verify against `back/src/payments/**`.
+- "**3D Secure: some banks require a quick verification step**" — universally true for SCA-mandated jurisdictions (EU/UK). Safe to claim.
+- "**We don't store your card number on our servers**" — true under standard Stripe Checkout/Elements integration; verify Custyle's integration mode confirms this.
+- "Split payment / invoice" rejections — likely correct but unverified; could be supported via Stripe Invoices.
+
 ## Sources
 
 - `~/Desktop/Custyle/launch-strategy/kickstarter/ks-faq.md` — Ordering & Fulfillment section (2026-05)
