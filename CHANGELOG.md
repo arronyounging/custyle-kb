@@ -36,3 +36,14 @@ First four entries promoted to `confidence: medium`, ready for the export-for-ra
 - `kb.ordering.payment-methods`
 - `kb.after-sales.returns`
 All four sourced from `launch-strategy/kickstarter/ks-faq.md`. Quick answers under 80 words; live commerce facts (price, ETA, specific order state) consistently deferred to commerce APIs.
+
+### Content fill — second batch (2026-05-19)
+Brand-essential category bootstrap. Four entries promoted to `confidence: medium`:
+- `kb.about-custyle.what-is-custyle` — the front-door identity answer
+- `kb.about-custyle.meet-the-crew` — canonical 9-agent roster (Vibbi/Pia/Nova/Ink/Bolt/Grid/Axis/Moxy/Lumi)
+- `kb.ai-design-workflow.how-it-works` — the "how does this actually work" answer
+- `kb.product-capability.what-can-i-make` — 13 catalog categories (Wear/Carry/Display)
+
+All four written against locked sources (`custyle-brand/voice/crew.md`, `identity/positioning.md`, ks-faq Q1/Q2/Q4/Q5). Voice held to brand spec: confident first-person, "you" not "users", verbs lead, 15-word sentence cap, no "AI-powered" / no model-stack disclosure. Editorial notes on each entry flag any line that wasn't direct lift.
+
+Total at this checkpoint: **8 entries at confidence:medium, 56 stubs.**

@@ -6,21 +6,23 @@ intent_aliases:
   - "What product types do you support?"
   - "Can I make a hoodie / t-shirt / cap?"
   - "What can I create here?"
+  - "What products do you offer?"
 category: product-capability
 audience: customer
 language: en
-confidence: low
+confidence: medium
 related:
   - kb.product-capability.product-categories
   - kb.product-capability.limitations
+  - kb.ai-design-workflow.how-it-works
 boundary:
   forbid_commerce_facts: true
   forbid_external_facts: true
   forbid_production_claims: true
 source_of_truth:
   - "../../../custyle-brand/product/definition.md"
-  - "~/Desktop/Custyle/seo-articles/ai-custom-merchandise-market-2026.md"  # POD vs AI Merch comparison
-  - "~/Desktop/Custyle/launch-strategy/kickstarter/ks-faq.md"  # 36 customer-facing Q&A
+  - "~/Desktop/Custyle/seo-articles/ai-custom-merchandise-market-2026.md"
+  - "~/Desktop/Custyle/launch-strategy/kickstarter/ks-faq.md"
 last_verified: 2026-05-19
 owner: arronyounging
 review_cadence_days: 90
@@ -28,20 +30,49 @@ review_cadence_days: 90
 
 # What can I make on Custyle?
 
-> Status: **stub**. Body TODO.
-
 ## Quick answer
 
-TODO — ≤ 80 words. Lead with the most expansive accurate statement of capability (apparel, hats, bags, accessories, footwear, etc.). Reinforce "intent-driven customization — AI routes to the right manufacturing path".
+Thirteen product categories today, across three groups — Wear (T-shirts, hoodies, sweatshirts, kids' clothing, underwear), Carry (tote bags, canvas bags, phone cases, stickers), and Display (mugs, mouse pads, notebooks, calendars). Each design is matched to the right manufacturing technique — DTG, embroidery, sublimation, whatever fits — so what you create is built for you, not "printed onto" something off a shelf.
 
 ## Details
 
-TODO — pull from `custyle-brand/product/definition.md` "Product Categories" table. Don't enumerate every SKU. Group by category. Mention that the catalog is continuously expanding.
+The current catalog:
+
+| Group | Categories |
+|---|---|
+| **Wear** | T-shirts, hoodies, sweatshirts, kids' clothing, underwear |
+| **Carry** | Tote bags, canvas bags, phone cases, stickers |
+| **Display** | Mugs, mouse pads, notebooks, calendars |
+
+More categories are added over time as the manufacturing network expands.
+
+A few things worth knowing:
+
+- **Each design routes to the technique that fits it.** A textured logo might land as embroidery; a photo-real illustration goes DTG or DTF; an all-over pattern uses sublimation. You don't pick the technique — the Crew matches it to your design and the product.
+- **One piece is enough.** No minimums, ever. A single custom hoodie is fine.
+- **Designs are made for merch, not just for screens.** The Crew designs with placement, scale, fabric, and technique in mind from the start — not as an afterthought.
+
+What you can't make is covered in [Limitations](limitations.md) — short version: no copyrighted IP you don't own, no hate / illegal / explicit content, and a few categories that are roadmap rather than today.
 
 ## When to defer
 
-TODO — e.g., "Does Custyle make X?" where X is not in the current catalog → suggest `consultation` to explore alternatives, or note that suppliers can be added.
+- "What size / material / care for [a specific product]?" → [`product-info/*`](../product-info/).
+- "Will you add [a new product category]?" → no future commitment policy; human teammate.
+- "Can I make [specific copyrighted character]?" → [`policies/ip-and-copyright`](../policies/ip-and-copyright.md).
+
+## Editorial notes (review before promoting to high)
+
+- The 13-category enumeration is **direct lift** from ks-faq Q4. Three-group framing (Wear / Carry / Display) also from ks-faq Q4. High confidence.
+- "Each design is matched to the right manufacturing technique" — Product Engine concept from `custyle-brand/product/definition.md` and architecture.md. Direct lift.
+- The technique list (DTG / embroidery / sublimation / DTF) is **standard custom-merch terminology**, but verify which are actually integrated today vs. roadmap. The Bolt agent's selection logic in `back/` is the ground truth.
+- "Built for you, not 'printed onto' something off a shelf" — direct lift from ks-faq Q2 + positioning.md guardrail #6.
+- "Designs are made for merch, not just for screens" — direct from positioning.md / messaging.md value pillars.
+- The technique-routing examples (textured logo → embroidery, photo-real → DTG, all-over → sublimation) — these match the industry conventions but should be cross-checked against Custyle's actual Bolt routing rules. If our supplier integration today only supports DTG (likely the case at Phase 1 with Printful), the embroidery / sublimation references should be qualified as "as the manufacturing network expands" rather than presented as current.
+- "More categories are added over time" — vague forward-looking, but safe (no specific commitment).
 
 ## Sources
 
-TODO
+- `~/Desktop/Custyle/launch-strategy/kickstarter/ks-faq.md` — Q2 (POD differentiation), Q4 (13 categories)
+- `custyle-brand/product/definition.md` — Product Engine + category overview
+- `custyle-brand/product/architecture.md` — manufacturing routing logic
+- `custyle-brand/identity/positioning.md` — guardrails (esp. #6 — "custom" is intent-driven, not printed-onto)
