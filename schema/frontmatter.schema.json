@@ -37,6 +37,7 @@
       "enum": [
         "product-capability",
         "ai-design-workflow",
+        "product-info",
         "catalog-and-pricing",
         "ordering",
         "production",

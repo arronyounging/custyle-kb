@@ -24,12 +24,13 @@ KB entries are organized by **functional category** (where the user expects to f
 |---|---|---|
 | `product-capability` | `capability` / `platform_qa` | "What can I do here?" |
 | `ai-design-workflow` | `platform_qa` / `clarification` | "How does the AI work?" |
+| `product-info` | `platform_qa` | Size/material/care/print attributes — defaults are KB, per-product specs defer |
 | `catalog-and-pricing` | `platform_qa` | Static pricing logic only — actual prices defer to API |
 | `ordering` | `platform_qa` / `commerce_fact_handoff` | Process is KB; specific order is API |
 | `production` | `platform_qa` | Techniques/lead-time policy. Specific ETA defers |
 | `shipping` | `platform_qa` / `commerce_fact_handoff` | Regions/policy is KB; this-order-tracking is API |
 | `after-sales` | `platform_qa` | Returns/refund policy |
-| `account-and-data` | `platform_qa` | Login flow, privacy stance |
+| `account-and-data` | `platform_qa` / `commerce_fact_handoff` | Login flow / privacy stance; per-user data defers |
 | `policies` | `platform_qa` | Summarized; link to actual doc |
 | `about-custyle` | `general_chat` / `platform_qa` | Brand story, the Crew |
 

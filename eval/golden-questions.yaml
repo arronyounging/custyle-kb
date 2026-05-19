@@ -154,6 +154,85 @@ cases:
     expected_handoff: converse.handoff_human
 
   # ─────────────────────────────────────────────
+  # product-info
+  # ─────────────────────────────────────────────
+  - id: golden.product-info.001
+    question: "What size should I order?"
+    expected_kb_ids: [kb.product-info.size-chart]
+    expected_intent: platform_qa
+    must_contain: ["size chart"]
+
+  - id: golden.product-info.002
+    question: "Is it 100% cotton?"
+    expected_kb_ids: [kb.product-info.material-and-fabric]
+    expected_intent: platform_qa
+
+  - id: golden.product-info.003
+    question: "How do I wash my Custyle hoodie?"
+    expected_kb_ids: [kb.product-info.care-instructions]
+    expected_intent: platform_qa
+    must_contain: ["cold"]
+
+  - id: golden.product-info.004
+    question: "Will the printed color match the preview?"
+    expected_kb_ids: [kb.product-info.color-accuracy]
+    expected_intent: platform_qa
+
+  - id: golden.product-info.005
+    question: "Does the t-shirt run oversized?"
+    expected_kb_ids: [kb.product-info.fit-and-cut]
+    expected_intent: platform_qa
+
+  # ─────────────────────────────────────────────
+  # account-and-data
+  # ─────────────────────────────────────────────
+  - id: golden.account.001
+    question: "How do I create an account?"
+    expected_kb_ids: [kb.account-and-data.signup-login]
+    expected_intent: platform_qa
+
+  - id: golden.account.002
+    question: "I forgot my password."
+    expected_kb_ids: [kb.account-and-data.password-reset]
+    expected_intent: platform_qa
+
+  - id: golden.account.003
+    question: "Where are my saved designs?"
+    expected_kb_ids: [kb.account-and-data.find-my-designs]
+    expected_intent: platform_qa
+    expected_handoff: design.list_my_designs
+
+  - id: golden.account.004
+    question: "How do I delete my account?"
+    expected_kb_ids: [kb.account-and-data.delete-account]
+    expected_intent: platform_qa
+    expected_handoff: converse.handoff_human
+
+  - id: golden.account.005
+    question: "Do you sell my data?"
+    expected_kb_ids: [kb.account-and-data.data-privacy]
+    expected_intent: platform_qa
+    must_not_contain: ["yes, we sell"]
+
+  - id: golden.account.006
+    question: "Unsubscribe me from emails."
+    expected_kb_ids: [kb.account-and-data.email-preferences]
+    expected_intent: platform_qa
+
+  # ─────────────────────────────────────────────
+  # ordering — new entries
+  # ─────────────────────────────────────────────
+  - id: golden.ordering.006
+    question: "Can I reorder the same design?"
+    expected_kb_ids: [kb.ordering.reorder]
+    expected_intent: platform_qa
+
+  - id: golden.ordering.007
+    question: "Can I send this as a gift?"
+    expected_kb_ids: [kb.ordering.gift-and-recipient]
+    expected_intent: platform_qa
+
+  # ─────────────────────────────────────────────
   # cross-boundary (always must defer or refuse)
   # ─────────────────────────────────────────────
   - id: golden.boundary.001

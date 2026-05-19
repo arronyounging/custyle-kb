@@ -9,6 +9,8 @@ Placing, modifying, and paying for orders. Process-level — never live commerce
 | P0 | `kb.ordering.payment-methods` | stub | arronyounging |
 | P0 | `kb.ordering.discounts` | stub | arronyounging |
 | P0 | `kb.ordering.taxes-and-fees` | stub | arronyounging |
+| P0 | `kb.ordering.reorder` | stub | arronyounging |
+| P0 | `kb.ordering.gift-and-recipient` | stub | arronyounging |
 | P1 | `kb.ordering.checkout-issues` | stub | arronyounging |
 | P1 | `kb.ordering.invoice-and-receipt` | stub | arronyounging |
 | P1 | `kb.ordering.bulk-orders` | stub | arronyounging |

@@ -23,17 +23,22 @@
 |---|---|---|
 | **product-capability** | What Custyle can / cannot do, what users can customize | [TOC](topics/product-capability/_TOC.md) |
 | **ai-design-workflow** | How AI design works, prompt tips, iteration, upload rules | [TOC](topics/ai-design-workflow/_TOC.md) |
-| **ordering** | Place / modify / cancel orders, payments, discounts | [TOC](topics/ordering/_TOC.md) |
+| **product-info** | Physical product attributes: sizing, materials, care | [TOC](topics/product-info/_TOC.md) |
+| **ordering** | Place / modify / cancel orders, payments, discounts, reorder, gift | [TOC](topics/ordering/_TOC.md) |
 | **shipping** | Regions, lead time, tracking, customs | [TOC](topics/shipping/_TOC.md) |
 | **after-sales** | Returns, defects, refunds, complaints | [TOC](topics/after-sales/_TOC.md) |
+| **account-and-data** | Signup, login, password, designs/orders lookup, data deletion, privacy | [TOC](topics/account-and-data/_TOC.md) |
 
 ## Future Categories (Phase 1+)
 
 - **catalog-and-pricing** — product types, base pricing logic
 - **production** — manufacturing techniques (DTG/DTF/embroidery/...) from user POV
-- **account-and-data** — signup/login, data privacy, deletion
 - **policies** — IP, content policy, ToS / Privacy summaries
-- **about-custyle** — brand story, the Crew (9 AI agents), safety stance
+- **about-custyle** — brand story, the Crew, safety stance
+
+## Integration with the Converse Domain
+
+See [`INTEGRATION.md`](INTEGRATION.md) — the load-bearing document that wires this KB into the custyle-platform Converse Domain at runtime. Without it, the KB is inert.
 
 ## Conventions
 
