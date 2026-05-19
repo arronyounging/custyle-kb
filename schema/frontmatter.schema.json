@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://custyle.ai/kb/frontmatter.schema.json",
+  "title": "Custyle KB Entry Frontmatter",
+  "description": "Schema for the frontmatter block at the top of every knowledge-base entry in topics/**.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "intent_primary",
+    "category",
+    "audience",
+    "language",
+    "confidence",
+    "boundary",
+    "last_verified",
+    "owner"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^kb\\.[a-z0-9-]+\\.[a-z0-9-]+$",
+      "description": "Stable, immutable canonical id. Format: kb.<category>.<slug>"
+    },
+    "intent_primary": {
+      "type": "string",
+      "minLength": 4,
+      "description": "The user's most likely phrasing of the question this entry answers."
+    },
+    "intent_aliases": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 3 },
+      "description": "Alternative phrasings — used by the Selector for intent matching."
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "product-capability",
+        "ai-design-workflow",
+        "catalog-and-pricing",
+        "ordering",
+        "production",
+        "shipping",
+        "after-sales",
+        "account-and-data",
+        "policies",
+        "about-custyle"
+      ]
+    },
+    "audience": {
+      "type": "string",
+      "enum": ["customer", "prospect", "both"]
+    },
+    "language": {
+      "type": "string",
+      "enum": ["en", "zh"],
+      "description": "Phase 0 is en-only. zh ships later."
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["low", "medium", "high"],
+      "description": "low=stub, medium=written-but-unreviewed, high=owner-reviewed-and-current"
+    },
+    "related": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^kb\\.[a-z0-9-]+\\.[a-z0-9-]+$" }
+    },
+    "boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "forbid_commerce_facts",
+        "forbid_external_facts",
+        "forbid_production_claims"
+      ],
+      "properties": {
+        "forbid_commerce_facts": {
+          "type": "boolean",
+          "description": "If true, Answer LLM must not state prices, inventory, ETAs, or order statuses from this entry. Defer to APIs."
+        },
+        "forbid_external_facts": {
+          "type": "boolean",
+          "description": "If true, Answer LLM must not cite anything outside provided context."
+        },
+        "forbid_production_claims": {
+          "type": "boolean",
+          "description": "If true, Answer LLM must not claim a design was generated/saved/added-to-cart/ordered unless that is in provided context."
+        },
+        "defer_to_api": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["condition", "handoff"],
+            "properties": {
+              "condition": { "type": "string" },
+              "handoff": {
+                "type": "string",
+                "pattern": "^(transact|shop|design|inspire)\\.[a-z_]+$"
+              }
+            }
+          }
+        }
+      }
+    },
+    "source_of_truth": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 4 },
+      "description": "Links/paths to authoritative sources. Required before confidence:high."
+    },
+    "last_verified": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO date (YYYY-MM-DD) the content was last verified against source_of_truth."
+    },
+    "owner": {
+      "type": "string",
+      "pattern": "^[a-z0-9_.+-]+@custyle$|^[a-z0-9_.+-]+@custyle\\.ai$|^[a-z0-9_.+-]+$",
+      "description": "Domain-responsible owner. Free-form short handle or email."
+    },
+    "review_cadence_days": {
+      "type": "integer",
+      "minimum": 7,
+      "maximum": 365,
+      "default": 90
+    }
+  }
+}

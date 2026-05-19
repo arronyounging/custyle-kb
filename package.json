@@ -1,0 +1,24 @@
+{
+  "name": "custyle-kb",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Custyle customer-facing knowledge base (powers Converse Domain)",
+  "scripts": {
+    "validate": "tsx scripts/validate.ts",
+    "lint": "tsx scripts/lint-content.ts",
+    "export": "tsx scripts/export-for-rag.ts",
+    "check": "pnpm validate && pnpm lint"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "ajv": "^8.12.0",
+    "ajv-formats": "^3.0.1",
+    "gray-matter": "^4.0.3",
+    "tsx": "^4.7.0",
+    "typescript": "^5.4.0",
+    "yaml": "^2.4.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

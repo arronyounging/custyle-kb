@@ -1,0 +1,182 @@
+# Custyle KB Golden Questions
+#
+# Regression set: every question here must continue to retrieve the expected
+# KB entries with the expected intent and boundary posture. Run before any
+# refactor of retrieval or the Converse Domain selector.
+#
+# Phase 0: questions only. Expected answers filled in once entries are written.
+# Format:
+#   - id: stable id for this golden case
+#     question: user phrasing
+#     expected_kb_ids: which entry ids must be in the retrieved set
+#     expected_intent: target Converse selector intent
+#     expected_handoff: optional; if the question must defer
+#     must_contain: substrings required in Quick answer
+#     must_not_contain: substrings that signal hallucination / off-voice
+
+version: 0.1
+
+cases:
+  # ─────────────────────────────────────────────
+  # product-capability
+  # ─────────────────────────────────────────────
+  - id: golden.capability.001
+    question: "What can I make on Custyle?"
+    expected_kb_ids: [kb.product-capability.what-can-i-make]
+    expected_intent: capability
+    must_contain: []
+    must_not_contain: ["I'm just an AI", "Unfortunately"]
+
+  - id: golden.capability.002
+    question: "Can I customize a hoodie?"
+    expected_kb_ids: [kb.product-capability.what-can-i-make]
+    expected_intent: capability
+
+  - id: golden.capability.003
+    question: "What product types do you support?"
+    expected_kb_ids:
+      - kb.product-capability.what-can-i-make
+      - kb.product-capability.product-categories
+
+  - id: golden.capability.004
+    question: "Can I upload my own design?"
+    expected_kb_ids: [kb.product-capability.upload-rules]
+
+  - id: golden.capability.005
+    question: "Is there anything you can't make?"
+    expected_kb_ids: [kb.product-capability.limitations]
+
+  # ─────────────────────────────────────────────
+  # ai-design-workflow
+  # ─────────────────────────────────────────────
+  - id: golden.workflow.001
+    question: "How does the AI design work?"
+    expected_kb_ids: [kb.ai-design-workflow.how-it-works]
+    expected_intent: clarification
+
+  - id: golden.workflow.002
+    question: "How do I write a good prompt?"
+    expected_kb_ids: [kb.ai-design-workflow.prompt-tips]
+
+  - id: golden.workflow.003
+    question: "Can I iterate on a design I already made?"
+    expected_kb_ids: [kb.ai-design-workflow.iteration]
+
+  - id: golden.workflow.004
+    question: "What image formats can I upload?"
+    expected_kb_ids: [kb.ai-design-workflow.upload-rules]
+
+  - id: golden.workflow.005
+    question: "I don't know what to design — can you help?"
+    expected_kb_ids: [kb.ai-design-workflow.consultation-intro]
+    expected_handoff: "converse.reply+tool=consultation"
+
+  # ─────────────────────────────────────────────
+  # ordering
+  # ─────────────────────────────────────────────
+  - id: golden.ordering.001
+    question: "How do I place an order?"
+    expected_kb_ids: [kb.ordering.place-order]
+
+  - id: golden.ordering.002
+    question: "Can I cancel my order?"
+    expected_kb_ids: [kb.ordering.modify-cancel]
+
+  - id: golden.ordering.003
+    question: "What payment methods do you accept?"
+    expected_kb_ids: [kb.ordering.payment-methods]
+
+  - id: golden.ordering.004
+    question: "Do you have any discounts or coupons?"
+    expected_kb_ids: [kb.ordering.discounts]
+
+  - id: golden.ordering.005
+    question: "What's the status of my order #ABC123?"
+    expected_kb_ids: []
+    expected_intent: commerce_fact_handoff
+    expected_handoff: transact.get_order
+    must_not_contain: ["Your order is", "expected to arrive"]
+
+  # ─────────────────────────────────────────────
+  # shipping
+  # ─────────────────────────────────────────────
+  - id: golden.shipping.001
+    question: "Do you ship internationally?"
+    expected_kb_ids: [kb.shipping.regions-and-rates]
+
+  - id: golden.shipping.002
+    question: "Do you ship to Germany?"
+    expected_kb_ids: [kb.shipping.regions-and-rates]
+    must_contain: ["Germany"]
+
+  - id: golden.shipping.003
+    question: "How long until my order arrives?"
+    expected_kb_ids: [kb.shipping.lead-time]
+    must_not_contain: ["days exactly", "by Tuesday"]
+
+  - id: golden.shipping.004
+    question: "When will order #ABC123 arrive?"
+    expected_kb_ids: []
+    expected_intent: commerce_fact_handoff
+    expected_handoff: transact.get_order
+
+  - id: golden.shipping.005
+    question: "Will I be charged customs duties?"
+    expected_kb_ids: [kb.shipping.customs-and-duties]
+
+  - id: golden.shipping.006
+    question: "How do I track my order?"
+    expected_kb_ids: [kb.shipping.tracking]
+
+  # ─────────────────────────────────────────────
+  # after-sales
+  # ─────────────────────────────────────────────
+  - id: golden.after-sales.001
+    question: "What's your return policy?"
+    expected_kb_ids: [kb.after-sales.returns]
+
+  - id: golden.after-sales.002
+    question: "My product arrived damaged."
+    expected_kb_ids: [kb.after-sales.defects]
+    expected_handoff: converse.handoff_human
+
+  - id: golden.after-sales.003
+    question: "How do I get a refund?"
+    expected_kb_ids: [kb.after-sales.refunds]
+
+  - id: golden.after-sales.004
+    question: "Can I return a custom-printed shirt I don't like?"
+    expected_kb_ids: [kb.after-sales.returns]
+
+  - id: golden.after-sales.005
+    question: "I want to talk to a human."
+    expected_kb_ids: []
+    expected_handoff: converse.handoff_human
+
+  # ─────────────────────────────────────────────
+  # cross-boundary (always must defer or refuse)
+  # ─────────────────────────────────────────────
+  - id: golden.boundary.001
+    question: "How much does a hoodie cost?"
+    expected_intent: commerce_fact_handoff
+    expected_handoff: shop.get_pricing
+    must_not_contain: ["$", "USD", "dollars"]
+
+  - id: golden.boundary.002
+    question: "Is the black t-shirt in stock?"
+    expected_intent: commerce_fact_handoff
+    expected_handoff: shop.search_catalog
+
+  - id: golden.boundary.003
+    question: "Did my payment go through?"
+    expected_intent: commerce_fact_handoff
+    expected_handoff: transact.get_payment_status
+
+  - id: golden.boundary.004
+    question: "Are you better than Printful?"
+    must_not_contain: ["Printful", "better than", "competitor"]
+
+  - id: golden.boundary.005
+    question: "Can I sell merch with Mickey Mouse?"
+    expected_kb_ids: [kb.policies.ip-and-copyright]
+    must_not_contain: ["go ahead", "sure, you can"]
