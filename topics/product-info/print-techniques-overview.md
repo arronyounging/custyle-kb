@@ -19,6 +19,7 @@ boundary:
   forbid_production_claims: true
 source_of_truth:
   - "../../../custyle-brand/product/definition.md"
+  - "~/Desktop/Custyle/商品/供应链/一对半面料选型分析.md"
 last_verified: 2026-05-19
 owner: arronyounging
 review_cadence_days: 90

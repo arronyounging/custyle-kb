@@ -16,7 +16,8 @@ boundary:
   forbid_commerce_facts: true
   forbid_external_facts: true
   forbid_production_claims: true
-source_of_truth: []
+source_of_truth:
+  - "~/Desktop/Custyle/商品/颜色名称和色值列表.markdown"
 last_verified: 2026-05-19
 owner: arronyounging
 review_cadence_days: 90

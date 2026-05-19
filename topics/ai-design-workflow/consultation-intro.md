@@ -21,6 +21,7 @@ boundary:
       handoff: design.create  # tool=consultation is internal — route at the converse layer
 source_of_truth:
   - "../../../custyle-brand/product/consultation-agent.md"
+  - "~/Desktop/Custyle/vibbi-prototype/PRODUCT_DOC.md"  # dual-track flow (quick vs deep), Node 2 info hierarchy
 last_verified: 2026-05-19
 owner: arronyounging
 review_cadence_days: 90

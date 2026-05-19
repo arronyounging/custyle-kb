@@ -20,7 +20,9 @@ boundary:
   defer_to_api:
     - condition: "user wants the size chart for a specific product"
       handoff: shop.get_product_specs
-source_of_truth: []
+source_of_truth:
+  - "~/Desktop/Custyle/商品/供应链/"  # supplier-specific size docs (PPTX)
+  - "~/Desktop/Custyle/商品/Printful/"  # Printful integration spec
 last_verified: 2026-05-19
 owner: arronyounging
 review_cadence_days: 90

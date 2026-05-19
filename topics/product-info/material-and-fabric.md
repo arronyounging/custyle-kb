@@ -20,7 +20,9 @@ boundary:
   defer_to_api:
     - condition: "user wants material specs for a specific product"
       handoff: shop.get_product_specs
-source_of_truth: []
+source_of_truth:
+  - "~/Desktop/Custyle/商品/供应链/一对半面料选型分析.md"
+  - "~/Desktop/Custyle/商品/供应链/衣舍面料选型分析 .md"
 last_verified: 2026-05-19
 owner: arronyounging
 review_cadence_days: 90

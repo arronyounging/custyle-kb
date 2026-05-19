@@ -10,6 +10,7 @@ How the AI design process actually works for the user. The "how do I make someth
 | P0 | `kb.ai-design-workflow.upload-rules` | stub | arronyounging |
 | P0 | `kb.ai-design-workflow.consultation-intro` | stub | arronyounging |
 | P0 | `kb.ai-design-workflow.describe-vs-upload` | stub | arronyounging |
+| P0 | `kb.ai-design-workflow.print-technique-recommendation` | stub | arronyounging |
 | P1 | `kb.ai-design-workflow.style-guidance` | stub | arronyounging |
 | P1 | `kb.ai-design-workflow.regeneration-limits` | stub | arronyounging |
 | P1 | `kb.ai-design-workflow.copyright-and-safety` | stub | arronyounging |

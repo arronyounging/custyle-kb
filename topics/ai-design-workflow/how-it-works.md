@@ -19,6 +19,8 @@ boundary:
 source_of_truth:
   - "../../../custyle-brand/product/workflows.md"
   - "../../../custyle-brand/product/agent-system.md"
+  - "~/Desktop/Custyle/BP-10B/phase3-writing/chapters/bp-chapters-1-6.md"  # Ch 2-3: Creation Gap + AI vs POD + Leo story + 9-agent workflow
+  - "~/Desktop/Custyle/seo-articles/ai-custom-merchandise-market-2026.md"
 last_verified: 2026-05-19
 owner: arronyounging
 review_cadence_days: 90

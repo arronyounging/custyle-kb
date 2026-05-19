@@ -17,7 +17,9 @@ boundary:
   defer_to_api:
     - condition: "user wants to know if a specific code is currently valid"
       handoff: shop.validate_coupon
-source_of_truth: []
+source_of_truth:
+  - "~/Desktop/Custyle/launch-strategy/kickstarter/ks-faq.md"  # Reward Tiers section (merch credits mechanic)
+  - "~/Desktop/Custyle/launch-strategy/kickstarter/ks-reward-tiers.md"
 last_verified: 2026-05-19
 owner: arronyounging
 review_cadence_days: 90

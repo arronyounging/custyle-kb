@@ -19,6 +19,8 @@ boundary:
   forbid_production_claims: true
 source_of_truth:
   - "../../../custyle-brand/product/definition.md"
+  - "~/Desktop/Custyle/seo-articles/ai-custom-merchandise-market-2026.md"  # POD vs AI Merch comparison
+  - "~/Desktop/Custyle/launch-strategy/kickstarter/ks-faq.md"  # 36 customer-facing Q&A
 last_verified: 2026-05-19
 owner: arronyounging
 review_cadence_days: 90

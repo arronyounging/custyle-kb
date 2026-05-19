@@ -22,19 +22,19 @@
 | Category | Purpose | TOC |
 |---|---|---|
 | **product-capability** | What Custyle can / cannot do, what users can customize | [TOC](topics/product-capability/_TOC.md) |
-| **ai-design-workflow** | How AI design works, prompt tips, iteration, upload rules | [TOC](topics/ai-design-workflow/_TOC.md) |
-| **product-info** | Physical product attributes: sizing, materials, care | [TOC](topics/product-info/_TOC.md) |
+| **ai-design-workflow** | How AI design works, prompt tips, iteration, upload rules, technique recommendation | [TOC](topics/ai-design-workflow/_TOC.md) |
+| **product-info** | Physical product attributes: sizing, materials, care, color, print techniques | [TOC](topics/product-info/_TOC.md) |
 | **ordering** | Place / modify / cancel orders, payments, discounts, reorder, gift | [TOC](topics/ordering/_TOC.md) |
 | **shipping** | Regions, lead time, tracking, customs | [TOC](topics/shipping/_TOC.md) |
 | **after-sales** | Returns, defects, refunds, complaints | [TOC](topics/after-sales/_TOC.md) |
 | **account-and-data** | Signup, login, password, designs/orders lookup, data deletion, privacy | [TOC](topics/account-and-data/_TOC.md) |
+| **policies** | Plain-language summaries of ToS / Privacy / IP / Content Policy | [TOC](topics/policies/_TOC.md) |
+| **about-custyle** | Who is Custyle, the Crew, safety stance, contact | [TOC](topics/about-custyle/_TOC.md) |
 
 ## Future Categories (Phase 1+)
 
 - **catalog-and-pricing** — product types, base pricing logic
-- **production** — manufacturing techniques (DTG/DTF/embroidery/...) from user POV
-- **policies** — IP, content policy, ToS / Privacy summaries
-- **about-custyle** — brand story, the Crew, safety stance
+- **production** — manufacturing techniques (DTG/DTF/embroidery/...) from user POV (overlap with `product-info/print-techniques-overview` — promote only if user demand justifies)
 
 ## Integration with the Converse Domain
 

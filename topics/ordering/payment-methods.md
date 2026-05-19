@@ -15,7 +15,8 @@ boundary:
   forbid_commerce_facts: true
   forbid_external_facts: true
   forbid_production_claims: true
-source_of_truth: []
+source_of_truth:
+  - "~/Desktop/Custyle/launch-strategy/kickstarter/ks-faq.md"  # Ordering & Fulfillment section
 last_verified: 2026-05-19
 owner: arronyounging
 review_cadence_days: 90
