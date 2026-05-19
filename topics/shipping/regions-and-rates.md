@@ -24,7 +24,7 @@ boundary:
       handoff: shop.check_shipping_availability
 source_of_truth:
   - "~/Desktop/Custyle/launch-strategy/kickstarter/ks-faq.md"
-  - "~/Desktop/Custyle/商品/Printful/"
+  - "~/Desktop/Custyle/商品/[fulfillment-partner-docs]"
 last_verified: 2026-05-19
 owner: arronyounging
 review_cadence_days: 90
@@ -54,9 +54,9 @@ A few notes:
 
 ## Editorial notes (review before promoting to high)
 
-- ks-faq says **"Worldwide. Our fulfillment partner (Printful) has production facilities in the US, Europe, and other regions. International shipping is available to most countries."** No specific country enumeration in source.
-- **My enumeration "US, the UK, the EU, Canada, Australia, Japan"** is inferred from Printful's known fulfillment footprint, not from a Custyle policy doc. Verify against fulfillment integration. Particular concerns:
-  - **Japan**: Printful does ship to Japan but with longer transit; safe to claim.
+- ks-faq says **"Worldwide. Our global fulfillment network has production facilities in the US, Europe, and other regions. International shipping is available to most countries."** No specific country enumeration in source.
+- **My enumeration "US, the UK, the EU, Canada, Australia, Japan"** is inferred from the current fulfillment network's known footprint, not from a Custyle policy doc. Verify against the live fulfillment integration. Particular concerns:
+  - **Japan**: covered today but with longer transit; safe to claim.
   - **EU "most countries"**: hedged language is intentional — some EU member states have shipping limitations on certain products.
   - **Canada, Australia, NZ**: standard but verify the actual list.
 - "**Restricted destinations** exist (sanctions, embargoes, some remote territories)" — generic e-commerce standard, not in source. Confirm checkout actually surfaces a flag for restricted countries.
@@ -66,4 +66,4 @@ A few notes:
 ## Sources
 
 - `~/Desktop/Custyle/launch-strategy/kickstarter/ks-faq.md` — "Where do you ship?" (2026-05)
-- `~/Desktop/Custyle/商品/Printful/` — supported regions integration spec
+- `~/Desktop/Custyle/商品/[fulfillment-partner-docs]` — current fulfillment network supported-regions spec

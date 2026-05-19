@@ -67,7 +67,7 @@ What you can't make is covered in [Limitations](limitations.md) — short versio
 - The technique list (DTG / embroidery / sublimation / DTF) is **standard custom-merch terminology**, but verify which are actually integrated today vs. roadmap. The Bolt agent's selection logic in `back/` is the ground truth.
 - "Built for you, not 'printed onto' something off a shelf" — direct lift from ks-faq Q2 + positioning.md guardrail #6.
 - "Designs are made for merch, not just for screens" — direct from positioning.md / messaging.md value pillars.
-- The technique-routing examples (textured logo → embroidery, photo-real → DTG, all-over → sublimation) — these match the industry conventions but should be cross-checked against Custyle's actual Bolt routing rules. If our supplier integration today only supports DTG (likely the case at Phase 1 with Printful), the embroidery / sublimation references should be qualified as "as the manufacturing network expands" rather than presented as current.
+- The technique-routing examples (textured logo → embroidery, photo-real → DTG, all-over → sublimation) — these match the industry conventions but should be cross-checked against Custyle's actual Bolt routing rules. If our current manufacturing-network integration only supports DTG today, the embroidery / sublimation references should be qualified as "as the manufacturing network expands" rather than presented as currently live.
 - "More categories are added over time" — vague forward-looking, but safe (no specific commitment).
 
 ## Sources

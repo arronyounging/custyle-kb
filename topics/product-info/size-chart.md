@@ -23,7 +23,7 @@ boundary:
       handoff: shop.get_product_specs
 source_of_truth:
   - "~/Desktop/Custyle/商品/供应链/"
-  - "~/Desktop/Custyle/商品/Printful/"
+  - "~/Desktop/Custyle/商品/[fulfillment-partner-docs]"
 last_verified: 2026-05-19
 owner: arronyounging
 review_cadence_days: 90
@@ -75,5 +75,5 @@ If a piece doesn't fit, [Returns](../after-sales/returns.md) covers the policy (
 ## Sources
 
 - `~/Desktop/Custyle/商品/供应链/` — supplier sizing docs (PPTX, multiple suppliers)
-- `~/Desktop/Custyle/商品/Printful/` — Printful integration size data
+- `~/Desktop/Custyle/商品/[fulfillment-partner-docs]` — current fulfillment-partner integration size data
 - Verify against actual product-page size-chart UI

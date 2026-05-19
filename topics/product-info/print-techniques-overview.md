@@ -67,7 +67,7 @@ If you want a specific technique that's compatible with your design, you can ask
 
 - The five-technique list is **direct alignment with `一对半面料选型分析.md`** (DTG, DTF, screen, sublimation explicit) plus embroidery (industry-standard, mentioned in `custyle-brand/product/definition.md`).
 - The "best for / trade-offs" descriptions match standard industry knowledge of these techniques.
-- **"Each technique is integrated into Custyle's production today"** is an assumption. **Verify which are actually live vs. roadmap.** At Phase 1 (Printful POD), the live set may be narrower (DTG, possibly DTF). Embroidery and sublimation may not be available yet on Custyle's catalog even though the Crew is aware of them.
+- **"Each technique is integrated into Custyle's production today"** is an assumption. **Verify which are actually live vs. roadmap.** At Phase 1 (current manufacturing-network integration), the live set may be narrower (DTG, possibly DTF). Embroidery and sublimation may not be available yet on Custyle's catalog even though the Crew is aware of them.
 - "**Bolt picks the technique**" — direct from `voice/crew.md`.
 - The example mappings ("photo-real cat → DTG, all-over bag → sublimation, logo on hat → embroidery") are illustrative; verify they match Custyle's actual routing rules.
 

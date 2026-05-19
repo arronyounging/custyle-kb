@@ -57,10 +57,10 @@ When backfilling Quick answers and Details for the existing P0 stubs, these docu
 | `~/Desktop/Custyle/商品/颜色名称和色值列表.markdown` | 100+ official color names + hex → `product-info/color-accuracy` |
 | `~/Desktop/Custyle/BP-10B/phase3-writing/chapters/bp-chapters-1-6.md` | Leo story + Crew workflow (Ch 2-3) → `ai-design-workflow/how-it-works` + `about-custyle/*` |
 | `~/Desktop/Custyle/vibbi-prototype/PRODUCT_DOC.md` | Consultation dual-track flow → `ai-design-workflow/consultation-intro` + `prompt-tips` |
-| `~/Desktop/Custyle/seo-articles/ai-custom-merchandise-market-2026.md` | POD vs AI Merch Agent positioning → `product-capability/what-can-i-make` |
+| `~/Desktop/Custyle/seo-articles/ai-custom-merchandise-market-2026.md` | "Beyond POD" positioning → `product-capability/what-can-i-make` |
 | `~/Desktop/Custyle/custyle-brand/identity/` | Brand voice (story, positioning, naming) → `about-custyle/*` |
 | `~/Desktop/Custyle/custyle-brand/voice/crew.md` | Canonical Crew agent names → `about-custyle/meet-the-crew` |
-| `~/Desktop/Custyle/商品/Printful/` | Fulfillment specifics (lead time, regions, methods) → `shipping/*` |
+| `~/Desktop/Custyle/商品/[fulfillment-partner-docs]` | Fulfillment specifics (lead time, regions, methods) → `shipping/*` |
 | `~/Desktop/Custyle/custyle-platform/back/src/` | Behavior verification — when policy text and code disagree, code wins; either fix policy or KB. |
 
 ### Notion exports

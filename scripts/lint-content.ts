@@ -7,11 +7,22 @@
  *   - Quick answer ≤ 80 words (skipped for confidence:low stubs)
  *   - Banned phrases (from style guide)
  *   - No live commerce facts in body (price/currency markers)
- *   - No competitor names
+ *   - No competitor mentions (anywhere in the entry)
+ *   - No internally-used third-party supplier / partner brand names
+ *     (anywhere in the entry — this repo is public on GitHub)
  *
- * Stubs (confidence:low) are linted more leniently — they're allowed to
- * have TODO placeholders, but banned phrases and competitor mentions are
- * still flagged.
+ * Stubs (confidence:low) are linted leniently — TODO placeholders are
+ * allowed, but the brand / supplier / competitor / live-fact checks
+ * still run.
+ *
+ * Section-strip semantics:
+ *   - Writer-only sections (Sources + Editorial notes) are stripped
+ *     before checking voice/style rules (banned phrases, Quick-answer
+ *     word count, live-fact markers). Writers may legitimately mention
+ *     internal paths and inferred reasoning there.
+ *   - Competitor and supplier-name checks run on the FULL file content.
+ *     The repo is public; supplier identities should not be discoverable
+ *     anywhere, including in writer-only sections.
  */
 
 import { readFileSync, readdirSync, statSync } from "node:fs";
@@ -38,15 +49,47 @@ const BANNED_PHRASES = [
   "Ecosystem",
 ];
 
+/**
+ * Competitors — never compare Custyle to these (positioning guardrail).
+ * Different list from suppliers below; conflating the two confuses the
+ * rationale.
+ */
 const COMPETITORS = [
-  "Printful",
-  "Printify",
   "Teespring",
   "Spreadshirt",
   "Redbubble",
   "Zazzle",
   "Society6",
-  "Spring",
+];
+
+/**
+ * Internally-used third-party supplier / partner brand names.
+ *
+ * Custyle's brand position is "AI Merch Agent with a global manufacturing
+ * network." Naming specific fulfillment partners (Printful, Printify) or
+ * blank-garment brands (Bella+Canvas, Gildan, Next Level) pigeon-holes
+ * Custyle as a printer rather than a Product Engine.
+ *
+ * These names MUST NOT appear anywhere in the KB repo content — not in
+ * customer-facing sections, not in editorial notes, not in sources.
+ * The repo is public; discoverability is the same as customer exposure.
+ *
+ * When you genuinely need to reference one in writer-only context,
+ * encode it indirectly:
+ *   - "the fulfillment partner integration" (not "Printful integration")
+ *   - "the blank-garment supplier" (not "Bella+Canvas")
+ *   - "supplier docs at ~/Desktop/Custyle/商品/[supplier-docs]/" (not the brand name)
+ */
+const SUPPLIER_PARTNER_NAMES = [
+  "Printful",
+  "Printify",
+  "Gooten",
+  "Bella+Canvas",
+  "Bella Canvas",
+  "Gildan",
+  "Next Level",
+  "AS Colour",
+  "American Apparel",
 ];
 
 const LIVE_FACT_MARKERS = [
@@ -81,12 +124,15 @@ function walk(dir: string): string[] {
  * Strip writer-only sections from a body before linting / exporting.
  *
  * Two sections are writer-only by convention:
- *   - "## Sources" — vendor names, internal paths, provenance
+ *   - "## Sources" — internal paths, provenance
  *   - "## Editorial notes ..." — author's annotations on what's
  *     extrapolated beyond source; reviewed when promoting to high
  *
  * Both are excluded from the Answer LLM's context. Same convention
  * mirrored in export-for-rag.ts.
+ *
+ * Voice / brand / live-fact checks run on the stripped body. Supplier
+ * + competitor checks run on the FULL raw content (public-repo posture).
  */
 const WRITER_ONLY_SECTION_PATTERN = /^##\s+(Sources|Editorial notes\b.*)\s*$/m;
 
@@ -102,7 +148,8 @@ for (const file of files) {
   const raw = readFileSync(file, "utf8");
   const parsed = matter(raw);
   const fm = parsed.data as Record<string, unknown>;
-  const body = stripWriterOnlySections(parsed.content);
+  const customerFacingBody = stripWriterOnlySections(parsed.content);
+  const fullContent = raw; // include frontmatter + body; public-repo scan
   const confidence = fm.confidence as string;
 
   // Required sections — check against the raw content (including Sources)
@@ -114,7 +161,7 @@ for (const file of files) {
 
   // Quick answer length — only for medium/high confidence entries
   if (confidence !== "low") {
-    const quickAnswerMatch = body.match(/## Quick answer\s+([\s\S]*?)(?=\n##\s|$)/);
+    const quickAnswerMatch = customerFacingBody.match(/## Quick answer\s+([\s\S]*?)(?=\n##\s|$)/);
     if (quickAnswerMatch) {
       const words = quickAnswerMatch[1].trim().split(/\s+/).filter(Boolean).length;
       if (words > 80) {
@@ -134,29 +181,46 @@ for (const file of files) {
     }
   }
 
-  // Banned phrases (case-insensitive whole match for safety)
+  // Banned phrases — voice checks on customer-facing body only
   for (const phrase of BANNED_PHRASES) {
     const re = new RegExp(`\\b${phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i");
-    if (re.test(body)) {
+    if (re.test(customerFacingBody)) {
       issues.push({ file: rel, level: "warning", message: `banned phrase: "${phrase}"` });
     }
   }
 
-  // Competitor mentions
+  // Competitor mentions — full-file scan (public-repo posture)
   for (const comp of COMPETITORS) {
     const re = new RegExp(`\\b${comp}\\b`, "i");
-    if (re.test(body)) {
+    if (re.test(fullContent)) {
       issues.push({
         file: rel,
         level: "error",
-        message: `competitor mention "${comp}" — never compare to competitors`,
+        message: `competitor mention "${comp}" — public repo; never name competitors`,
       });
     }
   }
 
-  // Live fact markers
+  // Supplier / partner brand mentions — full-file scan (public-repo posture)
+  for (const name of SUPPLIER_PARTNER_NAMES) {
+    const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    // For names with spaces or "+", word-boundary doesn't fit — match
+    // the literal sequence as a token. For single-word names, anchor.
+    const re = /\s/.test(name)
+      ? new RegExp(escaped, "i")
+      : new RegExp(`\\b${escaped}\\b`, "i");
+    if (re.test(fullContent)) {
+      issues.push({
+        file: rel,
+        level: "error",
+        message: `third-party supplier/partner brand "${name}" — Custyle is the AI Merch Agent; suppliers stay behind the curtain. Use "global fulfillment network" / "manufacturing partner network" instead.`,
+      });
+    }
+  }
+
+  // Live fact markers — body only
   for (const re of LIVE_FACT_MARKERS) {
-    if (re.test(body)) {
+    if (re.test(customerFacingBody)) {
       issues.push({
         file: rel,
         level: "error",

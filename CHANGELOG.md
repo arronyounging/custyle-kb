@@ -23,7 +23,7 @@ All notable changes to the Custyle KB.
 - Tightened `boundary` flags on shipping + after-sales: `forbid_commerce_facts: true` is now uniform (any specific number/ETA defers to API)
 - Two new P0 categories materialized as stubs: `policies/` (terms-summary, privacy-policy, ip-and-copyright, content-policy) and `about-custyle/` (what-is-custyle, meet-the-crew, safety-stance, contact-us)
 - New stub `kb.ai-design-workflow.print-technique-recommendation` covering "why did the AI pick this technique?" — surfaced from `ks-faq.md` + supplier docs survey
-- Backfilled `source_of_truth` on 14 existing stubs with discovered authoritative files (ks-faq, 一对半面料选型分析, 颜色色值, bp-chapters, vibbi-prototype, Printful integration)
+- Backfilled `source_of_truth` on 14 existing stubs with discovered authoritative files (ks-faq, 一对半面料选型分析, 颜色色值, bp-chapters, vibbi-prototype, current fulfillment-partner integration)
 - `eval/coverage-gaps.md` overhauled with: identified gaps, source-mining table, and Notion-search result (none found)
 
 ### Added (P1 review fixes)
@@ -70,3 +70,12 @@ Voice discipline held throughout: 15-word sentence cap, second person, verbs lea
 - `KB.md` updated with live status board.
 - `README.md` Phase 0 → Phase 1.
 - `NEXT.md` added — medium → high promotion roadmap, INTEGRATION.md cross-link, multilingual plan, maintenance cadence.
+
+### Brand-positioning scrub: third-party supplier names removed (2026-05-19)
+
+Custyle's brand position is "the AI Merch Agent with a global manufacturing network." Specific fulfillment-partner names and blank-garment supplier brand names are not customer-facing — they pigeon-hole Custyle as a printer rather than a Product Engine.
+
+- All references to specific fulfillment-partner brand names across 5 entries (`shipping/lead-time`, `shipping/regions-and-rates`, `product-capability/what-can-i-make`, `product-info/print-techniques-overview`, `product-info/size-chart`) replaced with "global fulfillment network" / "manufacturing partner network" / "current fulfillment-partner integration."
+- `boundaries/do-not-answer.md` reorganized: separate sections for **Competitor comparisons** and **Third-party supplier / partner brand names** (different rationales, both blocked).
+- `scripts/lint-content.ts`: new `SUPPLIER_PARTNER_NAMES` check covering known POD-platform and blank-garment brand names. Runs on full file content (public-repo posture). The blocklist itself lives in the lint script source (the only place names are needed for the check to work — and the script is internal-tooling, not customer-facing).
+- Approved phrasings documented in `boundaries/do-not-answer.md` §5.

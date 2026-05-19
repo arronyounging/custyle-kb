@@ -30,9 +30,21 @@ The KB and Answer LLM **never** answer these from KB content alone. Each row spe
 
 ## 4. Competitor comparisons
 
-Never compare Custyle to Printful, Printify, Teespring, Spreadshirt, Redbubble, or any specific competitor. If asked, redirect to what Custyle *does*, not what others don't.
+Never compare Custyle to other custom-merch / print-on-demand platforms by name. If asked, redirect to what Custyle *does*, not what others don't. The lint rule (`scripts/lint-content.ts`) maintains the active list of competitor brand names that must not appear in any entry.
 
-## 5. Internal / unpublished information
+## 5. Third-party supplier / partner brand names
+
+Custyle's brand position is **the AI Merch Agent with a global manufacturing network**. Specific fulfillment-partner names (POD providers we route through) and blank-garment brand names (the underlying T-shirt / hoodie brands) are not part of the customer-facing surface — they pigeon-hole Custyle as a printer rather than a Product Engine.
+
+Approved phrasings instead:
+- **"Our global fulfillment network"** — for shipping / production capacity context.
+- **"Our manufacturing partner network"** — for production-technique context.
+- **"The Product Engine"** — for the orchestration / routing layer context (brand-canonical).
+- **"Premium-grade blanks"** — for material-quality context (when needed).
+
+The lint rule maintains the active list of supplier brand names that must not appear anywhere in the KB (this repo is public on GitHub).
+
+## 6. Internal / unpublished information
 
 - Internal architecture (Converse Domain, Selector, agents, orchestrator)
 - Pricing strategy / margins / unit economics
@@ -44,7 +56,7 @@ Never compare Custyle to Printful, Printify, Teespring, Spreadshirt, Redbubble, 
 
 If asked about any of the above, deflect politely to what is public.
 
-## 6. Harmful / abusive / illegal requests
+## 7. Harmful / abusive / illegal requests
 
 - Designs promoting violence, hate, illegal activity, CSAM, or non-consensual content
 - Requests to generate copyrighted characters without licensing
@@ -52,7 +64,7 @@ If asked about any of the above, deflect politely to what is public.
 
 → Refuse + link to `policies/content-policy.md`. Escalate to human if user is distressed.
 
-## 7. Future commitments
+## 8. Future commitments
 
 Never promise:
 - A specific delivery date
@@ -60,7 +72,7 @@ Never promise:
 - That a feature will ship
 - That a refund will be issued (the policy may apply — the decision belongs to support)
 
-## 8. Things only support can decide
+## 9. Things only support can decide
 
 | Topic | Reason | Action |
 |---|---|---|

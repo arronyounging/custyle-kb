@@ -15,7 +15,7 @@ Where Custyle ships, how long it takes, what to expect. Policy + process, never 
 
 ## Notes for writers
 
-- Source: `custyle-platform/back/src/fulfillment/**` + Printful integration docs in `custyle-platform/docs/integrations/`.
+- Source: `custyle-platform/back/src/fulfillment/**` + current fulfillment-partner integration docs in `custyle-platform/docs/integrations/`.
 - Lead time = production + transit. Treat as **typical ranges**, never a guarantee for a specific order.
 - Customs/duties: state the buyer is responsible (DDU), but never quote a specific duty rate.
 - All "when will mine arrive" questions → `transact.get_order`.
