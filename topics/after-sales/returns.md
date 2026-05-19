@@ -5,13 +5,16 @@ intent_aliases:
   - "Can I return a custom item?"
   - "Do you accept returns?"
   - "How do I send something back?"
+  - "Can I return if I just don't like it?"
 category: after-sales
 audience: customer
 language: en
-confidence: low
+confidence: medium
 related:
   - kb.after-sales.refunds
   - kb.after-sales.defects
+  - kb.after-sales.product-not-as-expected
+  - kb.ai-design-workflow.iteration
 boundary:
   forbid_commerce_facts: true
   forbid_external_facts: true
@@ -20,28 +23,39 @@ boundary:
     - condition: "specific return request for an existing order"
       handoff: converse.handoff_human
 source_of_truth:
-  - "~/Desktop/Custyle/launch-strategy/kickstarter/ks-faq.md"  # Returns / Refunds section
+  - "~/Desktop/Custyle/launch-strategy/kickstarter/ks-faq.md"
 last_verified: 2026-05-19
 owner: arronyounging
 review_cadence_days: 90
 ---
 
-# Return policy
-
-> Status: **stub**. Body TODO.
+# What's your return policy?
 
 ## Quick answer
 
-TODO — Custom-printed merch is generally non-returnable for buyer's-remorse — verify exact policy. Defects and wrong-item are different (see defects.md).
+Custom merch is made just for you, one piece at a time, so we don't take returns for buyer's remorse — there's no shelf to put it back on. Two exceptions: anything that arrives with a defect or quality issue we replace free, and if a design isn't landing right, iterate with the Crew **before** ordering — re-generations are unlimited.
 
 ## Details
 
-TODO — Layer 1: custom items are made for you, so general returns don't apply. Layer 2: exceptions for defects/damage/wrong item. Layer 3: how to start a case.
+Three cases, three different paths:
+
+| Case | Path |
+|---|---|
+| The product arrived with a defect, wrong item, or damage | Replacement at no cost — see [Defects](defects.md). |
+| The print looks different from the on-screen preview | Some variance is expected — see [Product not as expected](product-not-as-expected.md). Outside tolerance, treat as a defect. |
+| You changed your mind / it doesn't fit your vibe | Not returnable. Iterate the design before ordering next time — and tell us what didn't work so the Crew can learn. |
+
+A couple of practical notes:
+
+- **Photo evidence** of the issue (well-lit, clearly shows the problem) speeds up resolution on any defect or damage claim.
+- **Wrong size shipped** is a defect on our side — handled free. **Wrong size ordered** is a buyer choice and not returnable; we recommend checking the per-product size chart before ordering (see [Size chart](../product-info/size-chart.md)).
+- **Bulk orders** may have different terms — covered case by case.
 
 ## When to defer
 
-TODO
+- Any specific return / replacement request → handoff to a human teammate. We process these case by case.
+- Defect claim → see [Defects](defects.md) for the evidence checklist before handoff.
 
 ## Sources
 
-TODO
+- `~/Desktop/Custyle/launch-strategy/kickstarter/ks-faq.md` — "What if I'm not satisfied with my merch?" (2026-05)

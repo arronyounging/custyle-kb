@@ -28,3 +28,11 @@ All notable changes to the Custyle KB.
 
 ### Added (P1 review fixes)
 - `scripts/extract-coverage-gaps.ts` — design stub for runtime gap-extraction pipeline (per `INTEGRATION.md` §7)
+
+### Content fill — first batch (2026-05-19)
+First four entries promoted to `confidence: medium`, ready for the export-for-rag pipeline:
+- `kb.shipping.lead-time`
+- `kb.shipping.regions-and-rates`
+- `kb.ordering.payment-methods`
+- `kb.after-sales.returns`
+All four sourced from `launch-strategy/kickstarter/ks-faq.md`. Quick answers under 80 words; live commerce facts (price, ETA, specific order state) consistently deferred to commerce APIs.

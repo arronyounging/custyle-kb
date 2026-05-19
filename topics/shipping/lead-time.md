@@ -8,10 +8,11 @@ intent_aliases:
 category: shipping
 audience: customer
 language: en
-confidence: low
+confidence: medium
 related:
   - kb.shipping.regions-and-rates
   - kb.shipping.tracking
+  - kb.shipping.customs-and-duties
 boundary:
   forbid_commerce_facts: true
   forbid_external_facts: true
@@ -22,8 +23,8 @@ boundary:
     - condition: "expected timeline for a product not yet in cart"
       handoff: shop.estimate_lead_time
 source_of_truth:
-  - "~/Desktop/Custyle/launch-strategy/kickstarter/ks-faq.md"  # "How long does shipping take?" section
-  - "~/Desktop/Custyle/商品/Printful/"  # Printful integration lead-time spec
+  - "~/Desktop/Custyle/launch-strategy/kickstarter/ks-faq.md"
+  - "~/Desktop/Custyle/商品/Printful/"
 last_verified: 2026-05-19
 owner: arronyounging
 review_cadence_days: 90
@@ -31,20 +32,34 @@ review_cadence_days: 90
 
 # How long does delivery take?
 
-> Status: **stub**. Body TODO.
-
 ## Quick answer
 
-TODO — Frame as **typical ranges**: production X days + transit Y days, depending on region and product. Verify ranges against fulfillment integration.
+Custom merch is made just for you, so total time is **production + shipping**. Typical production runs 3–7 business days. Transit on top of that: 3–5 days within the US, 5–10 days across Europe, 7–15 days rest of world. For your actual order's ETA, check Account → Orders, or ask me to pull the live status.
 
 ## Details
 
-TODO — Break out by region. Custom merch is made on demand — set realistic expectations.
+Two phases run back to back once you place an order:
+
+| Phase | Typical time | What's happening |
+|---|---|---|
+| Production | 3–7 business days | The Crew finalizes the artwork; the right manufacturing technique runs (DTG / DTF / embroidery / etc.); QC. |
+| Transit | Varies by region | Carrier delivery — see ranges in Quick answer above. |
+
+A few things that shift the timing:
+- **Technique**: DTG and DTF print fast; embroidery and all-over print take longer.
+- **Region**: domestic routes are quicker than cross-border; remote destinations and small islands stretch transit.
+- **Customs**: international packages sometimes hold for inspection — outside our control. See [Customs & duties](customs-and-duties.md).
+- **Holiday peaks**: late November through December may add a few days end to end.
+
+Business days exclude weekends and public holidays in the production region.
 
 ## When to defer
 
-TODO
+- "When exactly will **my** order #X arrive?" → handoff `transact.get_order` for live tracking and current ETA.
+- "How long for a Y product if I order today?" → handoff `shop.estimate_lead_time` for a destination-aware estimate.
+- Custom rush requests → human teammate.
 
 ## Sources
 
-TODO
+- `~/Desktop/Custyle/launch-strategy/kickstarter/ks-faq.md` — "How long does shipping take?" section (2026-05)
+- `~/Desktop/Custyle/商品/Printful/` — fulfillment partner lead-time spec
