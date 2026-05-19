@@ -47,3 +47,26 @@ Brand-essential category bootstrap. Four entries promoted to `confidence: medium
 All four written against locked sources (`custyle-brand/voice/crew.md`, `identity/positioning.md`, ks-faq Q1/Q2/Q4/Q5). Voice held to brand spec: confident first-person, "you" not "users", verbs lead, 15-word sentence cap, no "AI-powered" / no model-stack disclosure. Editorial notes on each entry flag any line that wasn't direct lift.
 
 Total at this checkpoint: **8 entries at confidence:medium, 56 stubs.**
+
+### Content fill — batches 3–14 (2026-05-19)
+
+Full content roll. All remaining 56 stubs promoted to `confidence: medium`. Pipeline clean.
+
+Final state by category:
+- **product-capability** (6 entries): what-can-i-make, product-categories, limitations, customization-scope, languages-supported, account-required-for-creation
+- **ai-design-workflow** (10): how-it-works, prompt-tips, iteration, upload-rules, consultation-intro, describe-vs-upload, style-guidance, regeneration-limits, copyright-and-safety, print-technique-recommendation
+- **product-info** (7): size-chart, material-and-fabric, care-instructions, color-accuracy, fit-and-cut, print-techniques-overview, durability-and-wash-life
+- **ordering** (10): place-order, modify-cancel, payment-methods, discounts, taxes-and-fees, checkout-issues, invoice-and-receipt, bulk-orders, reorder, gift-and-recipient
+- **shipping** (8): regions-and-rates, lead-time, tracking, customs-and-duties, address-change, shipping-methods, lost-package, delivery-failure
+- **after-sales** (7): returns, defects, refunds, complaints, product-not-as-expected, warranty, review-and-feedback
+- **account-and-data** (8): signup-login, password-reset, find-my-designs, find-my-orders, delete-account, data-privacy, email-preferences, update-profile
+- **policies** (4): terms-summary, privacy-policy, ip-and-copyright, content-policy
+- **about-custyle** (4): what-is-custyle, meet-the-crew, safety-stance, contact-us
+
+Voice discipline held throughout: 15-word sentence cap, second person, verbs lead, no banned phrases, no competitor mentions, no live commerce facts in body, no model-stack disclosure. Every entry carries `## Editorial notes (review before promoting to high)` — the medium → high promotion checklist.
+
+### Meta polish (2026-05-19)
+
+- `KB.md` updated with live status board.
+- `README.md` Phase 0 → Phase 1.
+- `NEXT.md` added — medium → high promotion roadmap, INTEGRATION.md cross-link, multilingual plan, maintenance cadence.
