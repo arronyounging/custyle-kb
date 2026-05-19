@@ -97,7 +97,7 @@
               "condition": { "type": "string" },
               "handoff": {
                 "type": "string",
-                "pattern": "^(transact|shop|design|inspire)\\.[a-z_]+$"
+                "pattern": "^(transact|shop|design|inspire|converse)\\.[a-z_]+$"
               }
             }
           }

@@ -92,7 +92,11 @@ for (const file of files) {
     continue;
   }
 
-  const chunks = chunkBody(parsed.content);
+  const allChunks = chunkBody(parsed.content);
+  // Sources is a writers-facing provenance log — exclude it from the
+  // exported chunks so the Answer LLM is never grounded on internal paths,
+  // vendor names, or supplier references.
+  const chunks = allChunks.filter((c) => c.section !== "Sources");
   const quickAnswer = chunks.find((c) => c.section === "Quick answer")?.text ?? "";
 
   entries.push({

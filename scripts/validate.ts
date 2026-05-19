@@ -17,7 +17,7 @@
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join, basename, dirname, relative } from "node:path";
 import matter from "gray-matter";
-import Ajv from "ajv";
+import Ajv2020 from "ajv/dist/2020";
 import addFormats from "ajv-formats";
 
 const ROOT = join(__dirname, "..");
@@ -52,7 +52,7 @@ function walk(dir: string): string[] {
   return out;
 }
 
-const ajv = new Ajv({ allErrors: true, strict: false });
+const ajv = new Ajv2020({ allErrors: true, strict: false });
 // @ts-expect-error addFormats default export typing
 addFormats(ajv);
 const validate = ajv.compile(SCHEMA);
@@ -66,6 +66,12 @@ for (const file of files) {
   let fm: Record<string, unknown>;
   try {
     fm = matter(raw).data as Record<string, unknown>;
+    // gray-matter auto-parses ISO-date strings into JS Date objects.
+    // Normalize back to YYYY-MM-DD so the JSON Schema "string + format: date"
+    // check passes.
+    if (fm.last_verified instanceof Date) {
+      fm.last_verified = (fm.last_verified as Date).toISOString().slice(0, 10);
+    }
   } catch (e) {
     issues.push({ file: rel, level: "error", message: `frontmatter parse failed: ${(e as Error).message}` });
     continue;

@@ -77,6 +77,17 @@ function walk(dir: string): string[] {
   return out;
 }
 
+/**
+ * Strip the "## Sources" section from a body before linting / exporting.
+ * Sources are a writers-facing provenance log — they may legitimately
+ * mention vendor names, internal paths, etc. that aren't fit for the
+ * customer-facing Answer LLM. Same convention applied in export-for-rag.
+ */
+function stripSourcesSection(body: string): string {
+  const i = body.search(/^##\s+Sources\s*$/m);
+  return i === -1 ? body : body.slice(0, i);
+}
+
 const files = walk(TOPICS);
 
 for (const file of files) {
@@ -84,12 +95,12 @@ for (const file of files) {
   const raw = readFileSync(file, "utf8");
   const parsed = matter(raw);
   const fm = parsed.data as Record<string, unknown>;
-  const body = parsed.content;
+  const body = stripSourcesSection(parsed.content);
   const confidence = fm.confidence as string;
 
-  // Required sections
+  // Required sections — check against the raw content (including Sources)
   for (const section of REQUIRED_SECTIONS) {
-    if (!body.includes(section)) {
+    if (!parsed.content.includes(section)) {
       issues.push({ file: rel, level: "error", message: `missing required section: ${section}` });
     }
   }

@@ -51,6 +51,12 @@ Every entry must end with sources. Format:
 - https://custyle.ai/help/shipping  (public help page, when published)
 ```
 
+**Sources are writers-only.** The `## Sources` section is stripped before content reaches the Answer LLM:
+- `scripts/lint-content.ts` skips it during voice checks — vendor names, internal paths, and supplier references are allowed here.
+- `scripts/export-for-rag.ts` excludes it from `body_chunks` — the Answer LLM is never grounded on it.
+
+That said, keep entries trustable: only list sources you actually used. Stale provenance is worse than no provenance.
+
 ## Word choices
 
 | Use | Don't use |
