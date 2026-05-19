@@ -14,13 +14,17 @@ related:
   - kb.shipping.customs-and-duties
   - kb.shipping.shipping-methods
 boundary:
-  forbid_commerce_facts: false
+  forbid_commerce_facts: true
   forbid_external_facts: true
   forbid_production_claims: true
   defer_to_api:
     - condition: "live shipping cost for a specific cart / destination"
       handoff: transact.estimate_shipping
-source_of_truth: []
+    - condition: "live availability check for a specific country not in the static list"
+      handoff: shop.check_shipping_availability
+source_of_truth:
+  - "~/Desktop/Custyle/launch-strategy/kickstarter/ks-faq.md"  # Ordering & Fulfillment section
+  - "~/Desktop/Custyle/商品/Printful/"
 last_verified: 2026-05-19
 owner: arronyounging
 review_cadence_days: 90

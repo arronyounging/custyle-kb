@@ -33,7 +33,11 @@ interface Issue {
 }
 
 const issues: Issue[] = [];
-const idIndex = new Map<string, string>(); // id -> file path
+// Uniqueness is on the composite key (id, language). Multilingual siblings
+// share the same id with different `language` values.
+const compositeKey = (id: string, language: string) => `${id}::${language}`;
+const compositeIndex = new Map<string, string>(); // (id, language) -> file path
+const idIndex = new Map<string, Set<string>>(); // id -> set of file paths (for related[] lookup)
 
 function walk(dir: string): string[] {
   const out: string[] = [];
@@ -99,14 +103,18 @@ for (const file of files) {
     });
   }
 
-  if (idIndex.has(id)) {
+  const language = (fm.language as string) ?? "en";
+  const key = compositeKey(id, language);
+  if (compositeIndex.has(key)) {
     issues.push({
       file: rel,
       level: "error",
-      message: `duplicate id "${id}" — first seen at ${idIndex.get(id)}`,
+      message: `duplicate (id, language) "${id}" + "${language}" — first seen at ${compositeIndex.get(key)}`,
     });
   } else {
-    idIndex.set(id, rel);
+    compositeIndex.set(key, rel);
+    if (!idIndex.has(id)) idIndex.set(id, new Set());
+    idIndex.get(id)!.add(rel);
   }
 
   const lastVerified = fm.last_verified as string | undefined;
@@ -158,7 +166,7 @@ for (const i of issues) {
 
 // eslint-disable-next-line no-console
 console.log(
-  `\nValidated ${files.length} entries — ${errors.length} errors, ${warnings.length} warnings.`
+  `\nValidated ${files.length} entries (${idIndex.size} unique ids across ${compositeIndex.size} (id, language) pairs) — ${errors.length} errors, ${warnings.length} warnings.`
 );
 
 if (errors.length > 0) process.exit(1);

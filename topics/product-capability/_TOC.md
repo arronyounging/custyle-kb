@@ -6,11 +6,12 @@ What Custyle can and cannot do, from the user's POV. The "what's possible here" 
 |---|---|---|---|
 | P0 | `kb.product-capability.what-can-i-make` | stub | arronyounging |
 | P0 | `kb.product-capability.product-categories` | stub | arronyounging |
-| P0 | `kb.product-capability.upload-rules` | stub | arronyounging |
 | P0 | `kb.product-capability.limitations` | stub | arronyounging |
 | P0 | `kb.product-capability.customization-scope` | stub | arronyounging |
 | P1 | `kb.product-capability.languages-supported` | stub | arronyounging |
 | P1 | `kb.product-capability.account-required-for-creation` | stub | arronyounging |
+
+> Note: "Can I upload my own design?" lives in [`ai-design-workflow/upload-rules.md`](../ai-design-workflow/upload-rules.md) — it's a workflow question, not a capability one.
 
 ## Notes for writers
 

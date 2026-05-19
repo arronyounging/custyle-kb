@@ -13,7 +13,7 @@ related:
   - kb.shipping.regions-and-rates
   - kb.ordering.taxes-and-fees
 boundary:
-  forbid_commerce_facts: false
+  forbid_commerce_facts: true
   forbid_external_facts: true
   forbid_production_claims: true
 source_of_truth: []

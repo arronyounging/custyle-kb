@@ -13,13 +13,17 @@ related:
   - kb.shipping.regions-and-rates
   - kb.shipping.tracking
 boundary:
-  forbid_commerce_facts: false
+  forbid_commerce_facts: true
   forbid_external_facts: true
   forbid_production_claims: true
   defer_to_api:
     - condition: "ETA for a specific order"
       handoff: transact.get_order
-source_of_truth: []
+    - condition: "expected timeline for a product not yet in cart"
+      handoff: shop.estimate_lead_time
+source_of_truth:
+  - "~/Desktop/Custyle/launch-strategy/kickstarter/ks-faq.md"  # "How long does shipping take?" section
+  - "~/Desktop/Custyle/商品/Printful/"  # Printful integration lead-time spec
 last_verified: 2026-05-19
 owner: arronyounging
 review_cadence_days: 90

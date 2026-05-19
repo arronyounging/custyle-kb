@@ -81,4 +81,9 @@ Every entry must end with sources. Format:
 
 ## Multilingual posture
 
-Phase 0 is English-only. When `zh` ships, entries are translated as **siblings** (same `id`, different `language`), not as multi-language files. The translator must preserve voice, not literal wording.
+Phase 0 is English-only. When `zh` ships, entries are translated as **siblings**:
+
+- Same `id`, different `language` value (the validator's uniqueness check is on the composite `(id, language)` key).
+- Sibling lives at `topics/<category>/<slug>.<lang>.md` to avoid filename collision.
+- Frontmatter `source_of_truth` may reference the English sibling.
+- Translators preserve voice, not literal wording — see `voice/tone` in custyle-brand.

@@ -13,7 +13,7 @@ related:
   - kb.after-sales.returns
   - kb.after-sales.defects
 boundary:
-  forbid_commerce_facts: false
+  forbid_commerce_facts: true
   forbid_external_facts: true
   forbid_production_claims: true
   defer_to_api:

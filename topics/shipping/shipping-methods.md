@@ -12,7 +12,7 @@ related:
   - kb.shipping.lead-time
   - kb.shipping.regions-and-rates
 boundary:
-  forbid_commerce_facts: false
+  forbid_commerce_facts: true
   forbid_external_facts: true
   forbid_production_claims: true
 source_of_truth: []

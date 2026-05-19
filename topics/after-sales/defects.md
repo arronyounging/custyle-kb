@@ -13,13 +13,14 @@ related:
   - kb.after-sales.returns
   - kb.after-sales.refunds
 boundary:
-  forbid_commerce_facts: false
+  forbid_commerce_facts: true
   forbid_external_facts: true
   forbid_production_claims: true
   defer_to_api:
     - condition: "any specific defect report on a real order"
       handoff: converse.handoff_human
-source_of_truth: []
+source_of_truth:
+  - "~/Desktop/Custyle/launch-strategy/kickstarter/ks-faq.md"  # Returns / Refunds section
 last_verified: 2026-05-19
 owner: arronyounging
 review_cadence_days: 90

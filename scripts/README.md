@@ -2,9 +2,10 @@
 
 | Script | Purpose | When it runs |
 |---|---|---|
-| `validate.ts` | Frontmatter schema, id uniqueness, category↔directory, slug↔filename, staleness | `pnpm validate` / CI on every PR |
+| `validate.ts` | Frontmatter schema, (id, language) uniqueness, category↔directory, slug↔filename, staleness | `pnpm validate` / CI on every PR |
 | `lint-content.ts` | Required sections, Quick-answer word cap, banned phrases, competitor mentions, live-fact markers | `pnpm lint` / CI on every PR |
 | `export-for-rag.ts` | Produces `kb-index.json` for runtime consumption by Converse Domain | `pnpm export` — manual + CI dry-run |
+| `extract-coverage-gaps.ts` | **Design stub.** Mines Converse runtime logs for "couldn't answer" signals → appends to `eval/coverage-gaps.md` | Weekly cron once implemented |
 
 ## Adding a new check
 

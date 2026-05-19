@@ -1,17 +1,21 @@
 ---
 id: kb.ai-design-workflow.upload-rules
-intent_primary: "What image formats can I upload?"
+intent_primary: "Can I upload my own design?"
 intent_aliases:
+  - "Do you accept custom artwork?"
+  - "What image formats can I upload?"
   - "What are the upload requirements?"
   - "Max file size for uploads?"
   - "What resolution should my image be?"
+  - "What's the color space requirement?"
 category: ai-design-workflow
 audience: customer
 language: en
 confidence: low
 related:
-  - kb.product-capability.upload-rules
+  - kb.ai-design-workflow.describe-vs-upload
   - kb.ai-design-workflow.copyright-and-safety
+  - kb.product-capability.what-can-i-make
 boundary:
   forbid_commerce_facts: true
   forbid_external_facts: true
@@ -22,21 +26,21 @@ owner: arronyounging
 review_cadence_days: 90
 ---
 
-# Upload rules
+# Uploading your own design
 
 > Status: **stub**. Body TODO.
 
 ## Quick answer
 
-TODO — File types, max size, recommended resolution, color space. Verify all from `custyle-platform`.
+TODO — Confirm yes (Upload & Go mode). State accepted formats (PNG/JPG/SVG — verify), recommended resolution, max file size, color space. End with the IP-responsibility reminder. ≤ 80 words.
 
 ## Details
 
-TODO — When the AI may upscale vs. when it needs the user to provide a higher-res file. Transparent backgrounds: do/don't.
+TODO — When the AI may upscale vs. when it needs a higher-res input. Transparent backgrounds: do/don't. Color space (sRGB recommended — verify). Verify all against `custyle-platform/back/src/uploads/**`.
 
 ## When to defer
 
-TODO
+TODO — Copyright concerns about specific uploaded content → `policies/ip-and-copyright.md` + human handoff for specific legal questions.
 
 ## Sources
 

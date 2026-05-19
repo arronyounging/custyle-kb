@@ -40,7 +40,7 @@ cases:
 
   - id: golden.capability.004
     question: "Can I upload my own design?"
-    expected_kb_ids: [kb.product-capability.upload-rules]
+    expected_kb_ids: [kb.ai-design-workflow.upload-rules]
 
   - id: golden.capability.005
     question: "Is there anything you can't make?"
